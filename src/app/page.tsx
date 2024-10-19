@@ -1,13 +1,10 @@
 
 "use client";
 import { useState } from "react";
-import CertifiedCourse from "src/components/frontend/CertifiedCourse";
-import CoursesBuy from "src/components/frontend/CourseBuy";
 import Footer from "src/components/frontend/footer";
 import Hero from "src/components/frontend/Hero";
 import MobileNav from "src/components/frontend/MobileNav";
 import Navbar from "src/components/frontend/Navbar";
-import PlacementCourse from "src/components/frontend/PlacementCourses";
 import RazorpayButton from "src/components/frontend/TestingPaymentPage";
 
 
