@@ -138,7 +138,7 @@ const BankDetailsForm: React.FC = () => {
                 name="upiId"
                 value={formData.upiId}
                 onChange={handleChange}
-                placeholder="Enter UPI ID (Optional)"
+                placeholder="Enter your UPI ID (Optional)"
                 className="mt-1 block w-full p-2 border border-gray-200 rounded-full bg-transparent focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-200"
               />
             </div>

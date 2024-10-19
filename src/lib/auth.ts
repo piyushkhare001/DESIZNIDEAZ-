@@ -56,6 +56,12 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
 
+        if(user.role=='teacher'){
+          if(user.verified !=true){
+            throw new Error("Teacher account not verified");
+          }
+        }
+
         return {
           id: user._id.toString(),
           email: user.email,
@@ -71,7 +77,9 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id; // Add id to token
         token.role = user.role; // Add role to token
       }
-      return token;
+      console.log("Generated JWT Token:", token); // Debugging line
+    return token;
+
     },
     async session({ session, token }) {
       if (session.user) {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import User from "@/models/User"; // Assuming your User schema is inside models/User.ts
+import User from "../../../../models/User"; // Assuming your User schema is inside models/User.ts
 import connectToMongoDB from "@/lib/mognodb";
 
 // Connect to the database
@@ -17,6 +17,7 @@ export async function POST(req: Request) {
       email,
       password: hashedPassword,
       role: "teacher", // Setting role as teacher (instructor)
+      
     });
 
     await instructor.save();
@@ -47,9 +48,9 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 // UPDATE an instructor by ID
 export async function PATCH(req: Request) {
   try {
-    const { id, name, email } = await req.json();
+    const {id,data} = await req.json();
 
-    const updatedInstructor = await User.findByIdAndUpdate(id, { name, email }, { new: true });
+    const updatedInstructor = await User.findByIdAndUpdate(id, {$set:{...data}});
 
     if (!updatedInstructor) {
       return NextResponse.json({ message: "Instructor not found" }, { status: 404 });

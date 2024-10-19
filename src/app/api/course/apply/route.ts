@@ -2,13 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { Course } from "../../../../models/Course";
 import { User } from "../../../../models/User";
 import connectToMongoDB from "@/lib/mognodb";
+import { getServerSession } from "next-auth/next"; // To get session
+import { authOptions } from "../../../../lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session || session.user.role !== "student") {
+      return NextResponse.json(
+        { message: "Unauthorized access" },
+        { status: 403 }
+      ); 
+    }
     await connectToMongoDB();
 
     const { courseId, userId } = await request.json();
-    const course = await Course.findById(courseId);
+    const course = await Course.findOne({ courseId }); 
     if (!course) {
       return NextResponse.json(
         { message: "Course not found" },
@@ -28,7 +38,7 @@ export async function POST(request: NextRequest) {
       );
     }
     course.purchasedBy.push(userId);
-    //   user.courses.push({courseId});
+     user.courses.push(courseId);
 
     await course.save();
     await user.save();
