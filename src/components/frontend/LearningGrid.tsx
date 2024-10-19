@@ -1,70 +1,41 @@
 import React from "react";
 
-interface HighlightTextProps {
-  text: string;
-}
-
-const HighlightText: React.FC<HighlightTextProps> = ({ text }) => (
-  <span className="highlight">{text}</span>
-);
-
-// interface CTAButtonProps {
-//   active: boolean;
-
-//   children: React.ReactNode;
-// }
-
-// const CTAButton: React.FC<CTAButtonProps> = ({ active, children }) => {
-//   return (
-//     <a
-//       href={'#'}
-//       className={`cta-button ${active ? 'active' : ''}`}
-//     >
-//       {children}
-//     </a>
-//   );
-// };
-
-
-
-// Define the type for the learning grid item
 interface LearningGridItem {
   order: number;
   heading: string;
-  highliteText?: string; // Optional as it's only used in one item
+  highliteText?: string; // Optional field for highlighted text
   description: string;
-  BtnText?: string; // Optional as it's only used in one item
-  BtnLink?: string; // Optional as it's only used in one item
+  BtnText?: string; // Optional button text
+  BtnLink?: string; // Optional button link
 }
 
-// Define the learning grid array
 const LearningGridArray: LearningGridItem[] = [
   {
     order: -1,
-    heading: "World-Class Learning for",
+    heading: "Innovative Learning Solutions for",
     highliteText: "Anyone, Anywhere",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
+      "DESIZNIDEAZ collaborates with over 300 esteemed universities and leading companies to offer flexible, affordable, and job-relevant online learning. Our mission is to empower individuals and organizations worldwide with essential skills and knowledge, shaping the future of education through innovative methodologies and accessible learning opportunities for all.",
     BtnText: "Learn More",
     BtnLink: "/",
   },
   {
     order: 1,
-    heading: "Curriculum Based on Industry Needs",
+    heading: "Industry-Relevant Curriculum",
     description:
-      "Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.",
+      "Maximize your time and savings! The Belajar curriculum is thoughtfully crafted for easy comprehension while aligning with industry demands. Our engaging approach demystifies challenging topics, empowering learners with the vital skills needed in a competitive landscape. Embrace education tailored for achievement and streamlined efficiency!",
   },
   {
     order: 2,
-    heading: "Our Learning Methods",
+    heading: "Dynamic Learning Framework",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "At DESIZNIDEAZ, we partner with more than 275 prestigious universities and top-tier companies to provide unparalleled educational opportunities. Our dynamic learning approaches seamlessly integrate academic theory with real-world practice, equipping learners with the essential skills and knowledge to thrive in their professional endeavors. Embark on a transformative educational experience that propels you towards success!",
   },
   {
     order: 3,
     heading: "Certification",
     description:
-      "Studynotion partners with more than 275+ leading universities and companies to bring",
+      "At DESIZNIDEAZ, we believe in the power of recognized credentials. Our certification programs are designed to validate your skills and knowledge, providing you with a competitive edge in the job market. Partnering with over 275 leading universities and companies, our certifications are industry-recognized, ensuring that what you learn is not only relevant but also applicable in real-world scenarios. Upon successful completion of our courses, you will receive a certificate that showcases your expertise, enhancing your resume and opening doors to new career opportunities. Join us and take the next step in your professional journey with confidence.",
   },
   {
     order: 4,
@@ -82,51 +53,51 @@ const LearningGridArray: LearningGridItem[] = [
 
 const LearningGrid: React.FC = () => {
   return (
-    <div className="grid mx-auto w-[350px] xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
-      {LearningGridArray.map((card, i) => {
-        return (
-          <div
-            key={i}
-            className={`${i === 0 && "xl:col-span-2 xl:h-[294px]"} ${
-              card.order % 2 === 1
-                ? "bg-richblack-700 h-[294px]"
-                : card.order % 2 === 0
-                ? "bg-richblack-800 h-[294px]"
-                : "bg-transparent"
-            } ${card.order === 3 && "xl:col-start-2"}`}
-          >
-            {card.order < 0 ? (
-              <div className="xl:w-[90%] flex flex-col gap-3 pb-10 xl:pb-0">
-                <div className="text-4xl font-semibold ">
-                  {card.heading}
-                  {card.highliteText && <HighlightText text={card.highliteText} />}
-                </div>
-                <p className="text-richblack-300 font-medium">
-                  {card.description}
-                </p>
-
-                {card.BtnText && card.BtnLink && (
-                  <div className="w-fit mt-2">
-                    <button >
-                      button
-                    </button>
+    <section className="mx-auto flex w-screen h-screen justify-center items-center text-white">
+      {/* Learning Grid */}
+      <div className="bg-black w-full h-full p-6 md:p-10 flex items-center"> {/* Added flex items-center */}
+        <div className="grid mx-auto w-full h-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {LearningGridArray.map((card, i) => (
+            <div
+              key={i}
+              className={`rounded-md p-6 flex flex-col justify-between ${
+                card.order < 0 ? "xl:col-span-2 bg-gray-900 h-full" : "bg-gray-800 h-full"
+              } transform transition duration-300 hover:scale-95 hover:shadow-lg`}
+            >
+              {card.order < 0 ? (
+                <div className="flex flex-col gap-3 flex-grow justify-center"> {/* Added flex-grow and justify-center */}
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white">
+                    {card.heading}{" "}
+                    <span className="text-blue-400">{card.highliteText}</span>
                   </div>
-                )}
-              </div>
-            ) : (
-              <div className="p-8 flex flex-col gap-8">
-                <h1 className="text-richblack-5 text-lg">{card.heading}</h1>
-                <p className="text-richblack-300 font-medium">
-                  {card.description}
-                </p>
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
+                  <p className="text-gray-400 font-medium text-sm sm:text-base">
+                    {card.description}
+                  </p>
+                  <div className="mt-4 flex justify-center"> {/* Centered button */}
+                    {card.BtnText && card.BtnLink && (
+                      <a
+                        href={card.BtnLink}
+                        className="px-4 py-2 text-black bg-yellow-400 rounded-md hover:bg-yellow-500"
+                      >
+                        {card.BtnText}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2 flex-grow justify-center"> {/* Added flex-grow and justify-center */}
+                  <h2 className="text-white text-lg font-bold">{card.heading}</h2>
+                  <p className="text-gray-400 text-sm sm:text-base">
+                    {card.description}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
-
 
 export default LearningGrid;
