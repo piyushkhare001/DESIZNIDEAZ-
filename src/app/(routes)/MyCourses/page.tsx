@@ -2,9 +2,8 @@
 import { PencilIcon, TrashIcon } from "@heroicons/react/20/solid";
 import Sidebar from "../Sidebar/page";
 import Image from "next/image";
-import nextjscourse from "src/assets/nextjscourse.png"
+import nextjscourse from "src/assets/nextjscourse.png";
 import tsximg from "src/assets/tsximg.jpg";
-
 
 interface Course {
   id: number;
@@ -23,12 +22,11 @@ const MyCourses = () => {
       id: 1,
       title: "TypeScript",
       imageUrl: (
-            <Image
-                src={tsximg}
-                alt="TSX Logo"
-                className="lg:w-[180px] lg:h-[150px] rounded-lg mr-4 justify-between ml-10"
-            />
-
+        <Image
+          src={tsximg}
+          alt="TSX Logo"
+          className="lg:w-[180px] lg:h-[150px] rounded-lg mr-4 justify-between ml-10"
+        />
       ),
       description: "typescript cxourse",
       createdDate: "August 23, 2024 | 1:51 AM",
@@ -40,12 +38,12 @@ const MyCourses = () => {
       id: 2,
       title: "Next.js",
       imageUrl: (
-            <Image
-                src={nextjscourse}
-                alt="Nextjs Logo"
-                className="lg:w-[180px] lg:h-[150px] rounded-lg mr-4 justify-between ml-10 "
-            />
-       ),
+        <Image
+          src={nextjscourse}
+          alt="Nextjs Logo"
+          className="lg:w-[180px] lg:h-[150px] rounded-lg mr-4 justify-between ml-10 "
+        />
+      ),
       description: "web dev",
       createdDate: "May 9, 2024 | 11:54 AM",
       duration: "2hr 30min",
@@ -71,11 +69,17 @@ const MyCourses = () => {
               {/* Course Info */}
               <div className="lg:flex items-center ">
                 {course.imageUrl}
-            
+
                 <div>
-                  <h3 className="text-xl font-semibold text-center ml-16 lg:-ml-[155px] ">{course.title}</h3>
-                  <p className="text-md text-gray-400 mt-4">{course.description}</p>
-                  <p className="text-md text-gray-400 mt-3">Created: {course.createdDate}</p>
+                  <h3 className="text-xl font-semibold text-center ml-16 lg:-ml-[155px] ">
+                    {course.title}
+                  </h3>
+                  <p className="text-md text-gray-400 mt-4">
+                    {course.description}
+                  </p>
+                  <p className="text-md text-gray-400 mt-3">
+                    Created: {course.createdDate}
+                  </p>
                   <div className="flex items-center mt-2">
                     <span className="text-sm bg-yellow-500 text-black px-2 py-1 rounded-lg mt-4">
                       {course.status}
