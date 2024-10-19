@@ -41,7 +41,7 @@ export async function PUT(request: Request) {
     }
 
     // Recalculate progress percentage
-    const course = await Course.findById(courseId).populate('content');
+    const course = await Course.findById(courseId).populate('content') || {content:[]};
     const totalContent = course.content.length;
     const completedContentCount = courseProgress.completedContent.length;
 

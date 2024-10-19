@@ -1,13 +1,21 @@
 import type { Config } from "tailwindcss";
 
+// import defaultTheme from "tailwindcss/defaultTheme";
+
 const config: Config = {
+
     darkMode: ["class"],
     content: [
+
+  darkMode: ["class"],
+  content: [
+
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
@@ -57,6 +65,24 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		}
   	}
+
+    screens: {
+      sm: "375px",
+      md: "768px",
+      lg: "1200px",
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
+      },
+    },
+    extend: {},
+
   },
   plugins: [require("tailwindcss-animate")],
 };
