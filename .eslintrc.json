@@ -1,11 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
-    // Enable the rule to avoid unused variables
-    "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/ban-types": "off",
+    // Todo: investigate, for each of these rules, whether we want them.
+    
 
-    // Keep useful rules enabled
+ 
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-tslint-comment": "off",

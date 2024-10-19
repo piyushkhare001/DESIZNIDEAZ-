@@ -1,9 +1,9 @@
-import SignUp from "../../../components/auth/Signup";
+import Signup from "@/app/(routes)/Register/page";
 
 const SignupPage = async () => {
   return (
     <>
-      <SignUp />
+      <Signup />
     </>
   );
 };
