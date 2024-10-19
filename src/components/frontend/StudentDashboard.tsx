@@ -1,8 +1,7 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
-import { 
-  BookOpen, Bookmark, MessageSquare, Search, 
+import {
+  BookOpen, Bookmark, MessageSquare, Search,
   User, ChevronRight, BarChart2, Calendar,
   Settings, LogOut, Briefcase, Award, Video
 } from 'lucide-react';
@@ -31,7 +30,7 @@ const StudentDashboard: React.FC = () => {
     console.log("Fetching user data...");
   }, []);
 
-  const filteredCourses = courses.filter(course => 
+  const filteredCourses = courses.filter(course =>
     course.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -58,6 +57,7 @@ const StudentDashboard: React.FC = () => {
                       : 'text-gray-400 hover:bg-gray-700'
                   }`}
                   onClick={() => setActiveTab(item.name.toLowerCase())}
+                  aria-label={item.name} // Added aria-label for accessibility
                 >
                   <item.icon className="mr-3 h-5 w-5" />
                   {item.name}
@@ -66,9 +66,12 @@ const StudentDashboard: React.FC = () => {
             ))}
           </ul>
         </nav>
-        <button className="mt-8 flex items-center text-gray-400 hover:text-white transition-colors">
+        <button
+          className="mt-8 flex items-center text-gray-400 hover:text-white transition-colors"
+          aria-label="Log out" // Added aria-label for the logout button
+        >
           <LogOut className="mr-3 h-5 w-5" />
-          Logout
+          <span className="sr-only">Log out</span>
         </button>
       </aside>
 
@@ -88,7 +91,7 @@ const StudentDashboard: React.FC = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             </div>
-            <button className="flex items-center space-x-2">
+            <button className="flex items-center space-x-2" aria-label="Profile">
               <User className="h-6 w-6 text-gray-400" />
               <span className="text-sm font-medium">Profile</span>
             </button>
@@ -146,11 +149,17 @@ const StudentDashboard: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center group">
+                  <button
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center group"
+                    aria-label={`Start course: ${course.title}`}
+                  >
                     Start Course
                     <ChevronRight className="ml-2 h-4 w-4 transition-transform duration-300 transform group-hover:translate-x-1" />
                   </button>
-                  <button className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                  <button
+                    className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300"
+                    aria-label="Watch Video"
+                  >
                     <Video className="h-5 w-5" />
                   </button>
                 </div>
@@ -163,14 +172,12 @@ const StudentDashboard: React.FC = () => {
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
           <h3 className="text-2xl font-bold mb-4">Welcome to LearnHub!</h3>
           <p className="text-gray-400">
-            Congratulations on taking the first step towards your learning journey! 
-            Here are some tips to get started:
+            Congratulations on taking the first step towards your learning journey! Here are some tips to get started:
           </p>
-          <ul className="list-disc list-inside text-gray-400 mt-2">
-            <li>Explore your enrolled courses and start with the first lesson</li>
-            <li>Set a study schedule to stay consistent</li>
-            <li>Engage with your instructors and fellow students in the course forums</li>
-            <li>Track your progress and celebrate small victories</li>
+          <ul className="list-disc list-inside text-gray-400 mt-4 space-y-2">
+            <li>Explore courses relevant to your career goals.</li>
+            <li>Bookmark courses for quick access later.</li>
+            <li>Track your progress and strive to complete tasks regularly.</li>
           </ul>
         </div>
       </main>
