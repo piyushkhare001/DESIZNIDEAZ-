@@ -7,23 +7,19 @@ const Stats = [
   { count: "50+", label: "Awards" },
 ];
 
-const StatsComponent: React.FC = () => {
+const StatsComponenet = () => {
   return (
-    <div className="bg-black p-6 md:p-10">
-      {/* Stats Container */}
-      <div className="flex flex-col gap-10 justify-between w-11/12 max-w-maxContent text-white mx-auto">
-        {/* Stats Boxes */}
-        <div className="grid grid-cols-2 md:grid-cols-4 text-center gap-6"> {/* Added gap-6 for spacing between boxes */}
+    <div className="bg-richblack-700">
+      {/* Stats */}
+      <div className="flex flex-col gap-10 justify-between w-11/12 max-w-maxContent text-white mx-auto ">
+        <div className="grid grid-cols-2 md:grid-cols-4 text-center">
           {Stats.map((data, index) => {
             return (
-              <div
-                key={index}
-                className="flex flex-col py-10 px-6 bg-gray-800 rounded-md shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              >
-                <h1 className="text-[30px] font-bold text-gray-100"> {/* Updated text color to gray-100 for better visibility */}
+              <div className="flex flex-col py-10" key={index}>
+                <h1 className="text-[30px] font-bold text-richblack-5">
                   {data.count}
                 </h1>
-                <h2 className="font-semibold text-[16px] text-gray-400"> {/* Updated text color to gray-400 */}
+                <h2 className="font-semibold text-[16px] text-richblack-500">
                   {data.label}
                 </h2>
               </div>
@@ -35,4 +31,4 @@ const StatsComponent: React.FC = () => {
   );
 };
 
-export default StatsComponent;
+export default StatsComponenet;

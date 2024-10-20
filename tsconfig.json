@@ -24,18 +24,6 @@
       "@/lib/*": ["src/lib/*"]
     }
   },
-
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/components/frontend/ContactDetails.tsx"  ],
-  "exclude": [
-    "node_modules"
-  ]
-}
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/admin/approvalPartner"],
   "exclude": ["node_modules"]
 }
-
